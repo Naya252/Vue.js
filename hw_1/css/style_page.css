@@ -1,0 +1,20 @@
+body {
+    margin: 0;
+    background-image: url(../img/bg.png);
+	background-repeat: round;
+	background-attachment: fixed;
+	box-sizing: border-box;
+}
+
+.header-h1 h1 {
+    padding-bottom: .125rem;
+    font-size: 1.5rem;
+    text-align: center;
+    color: #351294;
+}
+
+
+
+
+
+

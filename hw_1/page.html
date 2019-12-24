@@ -1,0 +1,70 @@
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style_page.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body >
+        <div id="app">
+            <header class="bg-white mb-3 shadow-sm">
+                <div class="container header-h1 p-3">
+                    <h1>{{sitename}}</h1>
+                </div>
+            </header>
+            <main class="container border border-white rounded shadow bg-light">
+                <div v-bind:data-id='info.id'>
+                    <div class="row p-3">
+                        <div class="row m-2">
+                            <h2 class="m-2 text-info" v-text="info.title"></h2>
+                        </div>
+                        <div class="row p-3">
+                        <div class="col-lg-4">
+                            <figure>
+                                <img class="img-fluid img-thumbnail shadow" v-bind:src='info.image'>
+                            </figure>
+                        </div>
+                        <div class="col-lg-8 p-2">
+                            
+                            <p class="text-success" v-html="info.description"></p>                           
+                            <p class="text-secondary">Имя: {{info.name}}</p>
+                            <p class="text-secondary">Фамилия: {{info.surname}}</p>
+                            <p class="text-secondary">Страна: {{info.country}}</p>
+                            <p class="text-secondary">Создатель: {{info.creator}}</p>
+                            <p class="text-secondary">Деятельность: {{info.working}}</p>
+                            <p class="text-secondary">Логин: {{info.login}}</p>
+                            <p class="text-secondary">Электронная почта: {{info.email}}</p>
+                        </div>
+                    </div>
+                    </div>
+                </div>
+            </main>
+    
+        </div>
+
+        <script>
+            let webStore = new Vue({
+                el: '#app',
+                data: {
+                    sitename: 'Личный кабинет',
+                    info:{
+                        id:1,
+                        image: 'img/ava.jpg',
+                        title:'Личная карточка',
+                        surname: 'Ждунов',
+                        name: 'Ждун',
+                        description: 'Ждун к месту почти везде и всегда. В любую ситуацию он вносит элемент невозмутимого и самую малость недоуменного спокойствия.',
+                        country: 'Нидерланды',
+                        creator: 'Маргрит ван Бреворт',
+                        working: 'Homunculus loxodontus',
+                        login:'Hom_lox',
+                        email: 'Hom_lox@gmail.com'
+                    }
+                }
+            })
+        </script>
+        
+    </body>
+</html>

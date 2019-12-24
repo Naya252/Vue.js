@@ -1,0 +1,64 @@
+body {
+    margin: 0;
+    background-color: #000;
+}
+
+header {
+    background-color: #000;
+    height: 4.5em;
+    overflow: hidden;
+}
+
+.header {
+    max-width: 900px;
+    margin: auto;
+    background-image: url(../img/images.jpg);
+    height: 100%;
+    background-repeat: no-repeat;
+}
+
+.sell {
+    height: 7em;
+}
+
+figure {
+    overflow: hidden;
+    width: 22em;
+    height: 25em;
+    border-radius: 1em;
+    margin: auto;
+   
+}
+
+.img {
+    width: 80em;
+    height: 25em;
+    margin-left: -28em;	
+    -webkit-transition: all 1s ease;
+	-moz-transition: all 1s ease;
+	-o-transition: all 1s ease;
+	-ms-transition: all 1s ease;
+	transition: all 1s ease;   
+}
+
+.img:hover {
+    width: 120em;
+	height: 35em;
+	margin-left: -48em;
+	margin-top: -5em;
+}
+
+.info {
+    margin: auto;
+    padding: 0 2em;
+}
+
+h1 {
+    color: rgb(112, 108, 108);
+}
+
+p {
+    color:rgb(214, 205, 205);
+}
+
+
