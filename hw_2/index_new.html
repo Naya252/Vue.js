@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="css/style.css">
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    </head>
+    <body >
+        <div id="app">
+            <header >
+                <div class="header">
+                    <h1>{{sitename}}</h1>
+                </div>
+            </header>
+            <div class="sell">
+
+            </div>
+            <main>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <figure>
+                                <img class="img" v-bind:src="product.image">
+                            </figure>
+                        </div>
+                        <div class="col-lg-7 info">
+                            <h1 v-text="product.title"></h1>
+                            <p v-html="product.description"><p>
+
+                            <div v-show="visible">
+                                <p v-html="product.description_full"><p>
+                            </div>
+                            <button type="button" class="btn btn-outline-success btn-sm mb-2 p-1" v-on:click="visible=!visible">{{visible?'Скрыть':'Открыть'}}</button>
+
+                            <p>Производство: {{product.prod}}</p>
+                            <p>Издательство: {{product.publishing}}<p>
+                            <p>Год: {{product.year}}</p>
+                            <p>Эксклюзивный лицензиат: {{product.license}}</p>
+                            <p>Стоимость: {{product.price | formatPrice}}</p>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+        <script>
+            let webStore = new Vue({
+            el: '#app',
+            data: {
+                sitename: '',
+                visible: false,
+                product:{
+                    id: 1,
+                    title: 'Lineage 2',
+                    description: '<em>Lineage 2</em> - это настоящая легенда онлайновых игр. Вышедшая уже довольно давно всё еще популярна среди ценителей хардкорных MMORPG.',
+                    description_full: 'Однако со времени первой игра сильно изменилась. Она стала лучше, интереснее. Разработчики добавили много годного контента, благодаря которому Lineage 2 может понравится и современным игрокам.',
+                    prod: 'NCSOFT Corporation',
+                    publishing: '4Game',
+                    year:2003,
+                    license: 'Innova Co. SARL',
+                    price: 450,
+                    image: './img/poster.jpg',                      
+                }                    
+            },
+            filters: {
+                formatPrice: function(val){
+                    if(!parseInt(val)) return '';
+                    let arr = val.toString().split("");
+                    let index = 3;
+                    while(arr.length > index){
+                        arr.splice(arr.length - index, 0, " ");
+                        index += 4;
+                    }
+                    return arr.join("") + ' ' + String.fromCharCode(8381);
+                }
+            }
+        });
+        </script>
+    </body>
+</html>
