@@ -108,7 +108,7 @@ header {
     text-shadow: 0 0 5px rgb(216, 213, 213), 0 0 10px  rgb(216, 213, 213), 0 0 15px  rgb(216, 213, 213), 0 0 20px #49ff18, 0 0 30px #49FF18, 0 0 40px #49FF18, 0 0 55px #49FF18, 0 0 75px #49ff18;
 }
 
-article a {
+article a, .card__delete_link {
     color: #00494B;
 }
 
@@ -146,7 +146,9 @@ article a {
     background-size: 25px;
 }
 
-.articles-header__change_input, .articles-header__search_input {
+.articles-header__change_input, 
+.articles-header__search_input, 
+.cards__form_input {
     width: 230px;
     margin-right: 1em;
     padding: 5px 5px 5px 15px; 
@@ -157,7 +159,9 @@ article a {
     transition: all 0.2s linear;
 }
 
-.articles-header__change_input:focus, .articles-header__search_input:focus {
+.articles-header__change_input:focus, 
+.articles-header__search_input:focus, 
+.cards__form_input:focus {
     box-shadow: inset 0 0 5px rgba(0,0,0,0.3);
 }
   
@@ -174,7 +178,7 @@ article a {
     align-items: center;
 }
   
-.articles-main__article {
+.articles-main__article, .card {
     flex-shrink: 0;
     width: 250px;
     height: auto;
@@ -186,7 +190,7 @@ article a {
     transition: box-shadow 0.3s linear;
 }
   
-.articles-main__article:hover {
+.articles-main__article:hover, .card:hover {
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
 }
   
@@ -254,6 +258,51 @@ article a {
 
 .services__total-price {
     text-align: center;
+}
+
+
+.cards {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.cards form{
+    border: 2px solid #2F803E;
+    border-radius: 1em;
+    margin: 1em;
+    padding: 1em;
+}
+
+.cards form button{
+    background: #39CC5F;
+    color: #fff;
+    border-color: #2F803E;
+    border-radius: .5em;
+    cursor: pointer;
+    padding: .5em;
+}
+
+.cards__form{
+    margin: 1em;
+}
+
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.card__img {
+    overflow: hidden;
+}
+
+.card h3{
+    margin: 0;
 }
 
 .footer {

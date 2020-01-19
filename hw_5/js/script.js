@@ -170,6 +170,95 @@ Vue.component('tab-services', {
         },
     },
 });
+
+Vue.component('tab-images', { 
+    template: `<div><gallery :images_component="images" :add_new_image="addNewImage" :delete_image="deleteImage"></gallery></div>`,
+    data: function() {
+        return {
+            images: [{
+                name: 'Картинка 1',
+                img: 'https://source.unsplash.com/random/348x196',
+            }, {
+                name: 'Картинка 2',
+                img: 'https://source.unsplash.com/random/347x196',
+            }, {
+                name: 'Картинка 3',
+                img: 'https://source.unsplash.com/random/346x196',
+            }, {
+                name: 'Картинка 4',
+                img: 'https://source.unsplash.com/random/349x196',
+            }, {
+                name: 'Картинка 5',
+                img: 'https://source.unsplash.com/random/348x195',
+            }, {
+                name: 'Картинка 6',
+                img: 'https://source.unsplash.com/random/348x194',
+            }, {
+                name: 'Картинка 7',
+                img: 'https://source.unsplash.com/random/347x196',
+            }, {
+                name: 'Картинка 8',
+                img: 'https://source.unsplash.com/random/347x195',
+            }, {
+                name: 'Картинка 9',
+                img: 'https://source.unsplash.com/random/346x197',
+            }, ]
+        };
+    },
+    methods: {
+        deleteImage(index) {
+            this.images.splice(index, 1);
+        },
+        addNewImage(newImage) {
+            this.images.unshift(newImage);
+        }
+    },
+});
+Vue.component('gallery', {
+    props: [
+        'images_component', 'add_new_image', 'delete_image'
+    ],
+    data: function() {
+        return {
+            name: '',
+            img: '',
+        }
+    },
+    template: `
+                <div class="cards">
+                    <form>
+                        <div class="cards__form">
+                            <label for="inputName">Название картинки</label>
+                            <input v-model='name' type="text" class="cards__form_input" id="inputName" placeholder="Введите название картинки" required>
+                        </div>
+                        <div class="cards__form">
+                            <label for="inputURL">URL к картинке</label>
+                            <input v-model="img" type="text" class="cards__form_input" id="inputURL" aria-describedby="inputURL" placeholder="Введите url" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary" v-on:click.prevent="add_new_image({name,img})">Добавить</button>
+                    </form>
+                    <div class="gallery">
+                        <gallery-image v-for="(image,index) in images_component" :index="index" :name="image.name" :img="image.img" :delete_image="delete_image"></gallery-image>
+                    </div>
+                </div>`,
+});
+Vue.component('gallery-image', {
+    props: ['index', 'name', 'img', 'delete_image'],
+    template: `<div class=''>
+                    <div class="card">
+                        <div class="card__img">
+                            <img  width="348px" height="196px" class="" v-bind:src="img" v-bind:alt="name">
+                        </div>                       
+                        <div class="card__title">
+                            <h3 class="card__title_text">{{name}}</h3>
+                        </div>
+                        <div class="card__delete">
+                            <a href="#" class="card__delete_link" v-on:click.prevent="delete_image(index)">Удалить</a>
+                        </div>
+                    </div>
+                </div>`,
+});
+
 new Vue ({
     el: '#app',
     data: {
@@ -177,7 +266,9 @@ new Vue ({
         currentTab: 'main',
         tabs: [{'name': 'Главная', 'tabName': 'main'},
             {'name': 'Статьи', 'tabName': 'articles'},
-            {'name': 'Услуги', 'tabName': 'services'}]                                       
+            {'name': 'Услуги', 'tabName': 'services'},
+            {'name': 'Галерея', 'tabName': 'images'},
+        ]                                       
     },
     computed: {
         currentTabComponent: function () {
