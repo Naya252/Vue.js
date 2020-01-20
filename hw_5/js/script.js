@@ -122,6 +122,7 @@ Vue.component('tab-articles', {
         }
     } 
 });
+
 Vue.component('tab-services', { 
     template: `<section class="services">
                 <ul class="services__list">
@@ -131,6 +132,8 @@ Vue.component('tab-services', {
                     </li>
                 </ul>
                 <p class="services__total-price"> Итоговая стоимость: <b> {{ totalPrice }} ₽</b></p>
+
+                <text-slider class="slider" v-bind:text="text" duration="6000"></text-slider>
             </section>`, 
     data: function(){
         return {
@@ -150,8 +153,8 @@ Vue.component('tab-services', {
                 price: 600,
                 active: false
             }],
-
-        }
+            text: ['Да, человек смертен, но это было бы еще полбеды. Плохо то, что он иногда внезапно смертен, вот в чем фокус!', '– Помилуйте, королева, – прохрипел он, – разве я позволил бы себе налить даме водки? Это чистый спирт!', 'Ведь сколько же раз я говорил вам, что основная ваша ошибка заключается в том, что вы недооцениваете значение человеческих глаз. Поймите, что язык может скрывать истину, а глаза – никогда!', 'Никогда и ничего не просите! Никогда и ничего, и в особенности у тех, кто сильнее вас. Сами предложат и сами все дадут!', '– Я, – подтвердил польщенный кот и добавил: – Приятно слышать, что вы так вежливо обращаетесь с котом. Котам обычно почему-то говорят «ты», хотя ни один кот никогда ни с кем не пил брудершафта.', '– Достоевский умер, – сказала гражданка, но как-то не очень уверенно. – Протестую! – горячо воскликнул Бегемот. – Достоевский бессмертен!', '– Не шалю, никого не трогаю, починяю примус, – недружелюбно насупившись, проговорил кот, – и еще считаю своим долгом предупредить, что кот древнее и неприкосновенное животное.'],
+        };
     },
     computed: {
         totalPrice: function () {
@@ -169,6 +172,25 @@ Vue.component('tab-services', {
         service.active = !service.active;
         },
     },
+});
+Vue.component('text-slider', {
+    props: ['text', 'duration'],
+    data: function() {
+        return {
+            index: 0,
+        }
+    },
+    created() {
+        setInterval(this.nextSlide, this.duration);
+    },
+    methods: {
+        nextSlide: function() {
+            this.index++;
+            if(this.index > this.text.length - 1)
+                this.index = 0;
+        }
+    },
+    template: `<div class="slide">{{text[index]}}</div>`
 });
 
 Vue.component('tab-images', { 
