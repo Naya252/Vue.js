@@ -62,11 +62,27 @@ header {
     width: 100%;
 }
 
+#menu__toggle {
+    display: none;
+  }
+
 .nav {
+    position: relative;
     display: flex;
-    justify-content: flex-start;
+    flex-direction: row;
+    justify-content: space-between;
     align-items: center;
+    height: 100%;
 }
+
+.nav__menu{
+    width: 100%;
+
+}
+
+.menu__btn {
+    display: none;
+}  
 
 .nav__logo {
     color: white;
@@ -85,6 +101,7 @@ header {
 }
 
 .nav__items {
+    position: static;
     display: flex;
     width: 60%;
     justify-content: flex-start;
@@ -342,7 +359,113 @@ article a, .card__delete_link {
 
 }
 
+@media screen and (max-width: 768px) {
+    .nav{
+        padding: 0 1em;
+    }
+    .nav__menu{
+        width: 5%;   
+    }
+
+    header .wrapper {
+        width: 100%;
+    }
+
+
+    .nav__items{
+        position: absolute;
+        top: 100%;
+        right: 0%;
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        background-color: rgba(29, 128, 77, 0.9);
+        visibility: hidden;
+    }
+
+    .nav__item{
+        position: relative;
+        padding: .5em;
+    }
+
+    .nav__item a {
+        display: block;
+        color: rgb(46, 71, 59);
+        font-weight: 600;
+        text-decoration: none;
+        text-shadow: none;
+        transition: color 0.3s linear;
+    }
+
+    .nav__item a:hover {
+        text-shadow: 0 0 2px;
+    }
+
+    .nav__items_active{
+        border-bottom: 1px solid rgb(46, 71, 59);
+    }
+      
+      #menu__toggle:checked ~ .menu__btn > span {
+        transform: rotate(45deg);
+      }
+      #menu__toggle:checked ~ .menu__btn > span::before {
+        top: 0;
+      
+        transform: rotate(0);
+      }
+      #menu__toggle:checked ~ .menu__btn > span::after {
+        top: 0;
+      
+        transform: rotate(90deg);
+      }
+      #menu__toggle:checked ~ .nav__items {
+        visibility: visible;
+      }
+  
+    .menu__btn {
+        top: 5px;
+        left: 10px;
+        z-index: 10;
+      
+        display: flex;
+        align-items: center;
+        width: 30px;
+        height: 25px;
+      
+        cursor: pointer;
+      }
+      
+      .menu__btn > span,
+      .menu__btn > span::before,
+      .menu__btn > span::after {
+        position: absolute;
+      
+        display: block;
+        width: 30px;
+        height: 2px;
+      
+        background-color: white;
+      
+        transition-duration: 0.25s;
+      }
+      
+      .menu__btn > span::before {
+        content: "";
+        top: -8px;
+      }
+      
+      .menu__btn > span::after {
+        content: "";
+        top: 8px;
+      }
+}
+
 @media screen and (max-width: 650px) {
+    .nav{
+        padding: 0 2em 0 .5em;
+    }
     .wrapper {
         width: 90%;
     }
@@ -355,12 +478,18 @@ article a, .card__delete_link {
         width: 270px;
     }
 
+    .slider {
+        width: 200px;   
+    }
+
 }
 
 @media screen and (max-width: 400px) {
     .wrapper {
         width: 96%;
     }
+
+    
     
 
 }
