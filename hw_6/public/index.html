@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" href="css/main.css">
+        
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="https://unpkg.com/vue-router@3.1.4/dist/vue-router.js"></script>
+
+        
+    </head>
+    <body >
+        <div id="app">
+            <header>
+                <div class="wrapper">
+                    <div class="nav">
+                        <div class="nav__logo">
+                            {{ logo }}
+                        </div>
+
+                        
+                        <div class="nav__menu">
+                            <input id="menu__toggle" type="checkbox">
+                            <label class="menu__btn" for="menu__toggle">
+                            <span></span>
+                            </label>
+
+                            <ul class="nav__items">
+                                <li class="nav__item"><router-link to="/" exact active-class="active" class="nav__link" tag="div" >Главная</router-link></li>
+                                <li class="nav__item"><router-link to="/articles" active-class="active" class="nav__link" tag="div" >Статьи</router-link></li>
+                                <li class="nav__item"><router-link to="/products" active-class="active" class="nav__link" tag="div" >Продукты</router-link></li>
+                                <li class="nav__item"><router-link to="/services" active-class="active" class="nav__link" tag="div" >Услуги</router-link></li>
+                                <li class="nav__item"><router-link to="/gallery" active-class="active" class="nav__link" tag="div" >Галерея</router-link></li>
+                            </ul>  
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <main>
+                <div class="wrapper">
+                    <router-view></router-view> 
+                </div>
+            </main>
+            <footer class="footer">
+                <div class="wrapper">
+                    <p>N_&_N © 2020</p>
+                </div>
+            </footer>
+        </div>
+
+        <script src="js/script.js"></script>
+    </body>
+</html>
